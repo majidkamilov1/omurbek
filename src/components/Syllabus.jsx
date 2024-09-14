@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import List from "./List";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Lists from "./Lists";
 
-const Plan = () => {
+const Syllabus = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -27,10 +28,6 @@ const Plan = () => {
       <div className="container">
         <div className="plan__text">
           <h3>Учебный план </h3>
-          <p>
-            Как сформировать учебный план Порядок формирования учебного плана
-            можно обозначить в следующей последовательности:
-          </p>
         </div>
         <table className="plan__lists">
           <tbody>
@@ -39,14 +36,9 @@ const Plan = () => {
               <th className="name">Название дисциплины</th>
               <th className="btn">Уч.план</th>
             </tr>
+
             {data?.results?.map((item) => (
-              <tr key={item.id}>
-                <td className="num">1</td>
-                <td className="name">{item.name} </td>
-                <td className="btn">
-                  <Link to={`/discipline/${item.id}`}>Уч.план</Link>
-                </td>
-              </tr>
+              <Lists item={item} />
             ))}
           </tbody>
         </table>
@@ -55,4 +47,4 @@ const Plan = () => {
   );
 };
 
-export default Plan;
+export default Syllabus;

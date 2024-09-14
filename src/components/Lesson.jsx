@@ -1,76 +1,34 @@
 import React from "react";
-
+const days_of_week = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
 const Lesson = ({ time, lessons }) => {
-  const Monday = lessons.find((lesson) => lesson.day_of_week == "monday");
-  const Tuesday = lessons.find((lesson) => lesson.day_of_week == "tuesday");
-  const Wednesday = lessons.find((lesson) => lesson.day_of_week == "wednesday");
-  const Thursday = lessons.find((lesson) => lesson.day_of_week == "thursday");
-  const Friday = lessons.find((lesson) => lesson.day_of_week == "friday");
-  const Saturday = lessons.find((lesson) => lesson.day_of_week == "saturday");
+  let data = [];
+  for (let i = 0; i < 6; i++) {
+    let day = lessons.find((el) => el.day_of_week == days_of_week[i]);
+    if (day) {
+      data.push(day);
+    } else {
+      data.push({
+        science: "",
+        group: "нету урока",
+      });
+    }
+  }
   return (
     <tr>
       <td className="time">{time}</td>
-
-      <td>
-        {Monday ? (
-          <>
-            <h5>{Monday.science}</h5>
-            <span>{Monday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
-      <td>
-        {Tuesday ? (
-          <>
-            <h5>{Tuesday.science}</h5>
-            <span>{Tuesday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
-      <td>
-        {Wednesday ? (
-          <>
-            <h5>{Wednesday.science}</h5>
-            <span>{Wednesday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
-      <td>
-        {Thursday ? (
-          <>
-            <h5>{Thursday.science}</h5>
-            <span>{Thursday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
-      <td>
-        {Friday ? (
-          <>
-            <h5>{Friday.science}</h5>
-            <span>{Friday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
-      <td>
-        {Saturday ? (
-          <>
-            <h5>{Saturday.science}</h5>
-            <span>{Saturday.group}</span>
-          </>
-        ) : (
-          <span>не урока</span>
-        )}
-      </td>
+      {data.map((item) => (
+        <td key={Math.random()}>
+          <h5>{item.science}</h5>
+          <span>{item.group}</span>
+        </td>
+      ))}
     </tr>
   );
 };

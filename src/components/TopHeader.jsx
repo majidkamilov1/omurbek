@@ -5,20 +5,20 @@ const TopHeader = () => {
     <section className="topheader ">
       <div className="container">
         <div className="topheader__item">
-          <ul className="topheader__item--content">
-            <li>
-              <img src="svg\topHeader__icon.svg" alt="" />
-              <a href=""> Преподавателям </a>
-            </li>
-            <li>
-              <img src="svg\topHeader__icon.svg" alt="" />
-              <a href=""> Преподавателям </a>
-            </li>
-            <li>
-              <img src="svg\topHeader__icon.svg" alt="" />
-              <a href=""> Преподавателям </a>
-            </li>
-          </ul>
+          <div className="topheader__item--content ">
+            <ul>
+              <li>
+                <p>
+                  "Билим алуу – ийне менен кудук казгандай. Бирок, эң негизгиси
+                  – ошо кудуктан суунун чыгышы. Курук кудукту каза бербеш
+                  керек." "Эч качан өзүңөрдүн ишиңерди, келечегиңерди,
+                  жашооңорду башкаларга байлабагыла. Башкалардан эч нерсе күтпө,
+                  сага ыңгайлуу жагын кыл. Сен башкаларды ойлогонуң менен
+                  башкалар сени ойлойбу?"
+                </p>
+              </li>
+            </ul>
+          </div>
           <div className="topheader__item--buttons">
             <button>KG</button>
             <button className="line">EN</button>

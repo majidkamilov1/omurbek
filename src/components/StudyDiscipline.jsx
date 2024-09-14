@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Lesson from "./Lesson";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
+const checkData = (time) => {
+  let date = new Date();
+  let [hour, minute] = time.split(":");
+  date.setHours(hour, minute);
+  return date.getTime();
+};
 
 const StudyDiscipline = () => {
   const [data, setData] = useState([]);
@@ -8,17 +16,20 @@ const StudyDiscipline = () => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "https://omurbek.pythonanywhere.com/api/v1/startendtime/"
+          `https://omurbek.pythonanywhere.com/api/v1/startendtime/`
         );
         const data = await response.data;
-        setData(data?.results);
+
+        setData(
+          data?.results.sort((a, b) => checkData(a.start) - checkData(b.start))
+        );
       } catch (error) {
         console.log(`Error fetching data: ${error}`);
       }
     }
-
     fetchData();
   }, []);
+  console.log(data);
   return (
     <section className="StudyDiscipline">
       <div className="container">

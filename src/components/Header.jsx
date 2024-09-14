@@ -1,13 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-const Header = () => {
+import { Link, NavLink } from "react-router-dom";
+const Header = ({ setmenuActive }) => {
   return (
     <header className="header">
       <div className="container">
         <div className="header__item">
-          <div className="header__item--logo">
+          <Link to="/" className="header__item--logo">
             <img src="/svg/logo.svg" alt="" />
-          </div>
+          </Link>
           <nav className="header__item--nav">
             <ul>
               <li>
@@ -25,11 +25,14 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Сontacts">Контакты</NavLink>
+                <NavLink to="/blog">Блог</NavLink>
               </li>
             </ul>
           </nav>
-          <div className="header__item--menu">
+          <div
+            onClick={() => setmenuActive(true)}
+            className="header__item--menu"
+          >
             <span></span>
             <span></span>
             <span></span>

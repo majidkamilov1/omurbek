@@ -1,19 +1,20 @@
 import React from "react";
 
-const Resources = () => {
+const Resources = ({ item }) => {
+  console.log(item);
   return (
     <section className="Resources">
-      <div className="Resources__img"></div>
+      <div
+        style={{ backgroundImage: `URL("${item.image}")` }}
+        className="Resources__img"
+      ></div>
       <div className="Resources__content">
-        <h3>Кыргызские волшебные сказки</h3>
+        <h3>{item.name}</h3>
         <span>30 декабря 1975 г</span>
-        <p>
-          ОшМУну классикалык университеттен - дүйнөлүк деңгээлдеги изилдөөчү
-          жана инновациялык университетке трансформациялоо.ОшМУну классикалык
-          университеттен - дүйнөлүк деңгээлдеги изилдөөчү жана инновациялык
-          университетке трансформациялоо.
-        </p>
-        <button>Читать </button>
+        <p>{item.description}</p>
+        <a href={item.pdf}>
+          Читать{" "}
+        </a>
       </div>
     </section>
   );
